@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var users = [User]()
+    
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
