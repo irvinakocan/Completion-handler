@@ -16,14 +16,9 @@ class Request {
         
         let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
             
-            guard let unwrappedData = data else {
-                return
-            }
-            do {
-                let users = try JSONDecoder().decode([User].self, from: unwrappedData)
+            if let data = data, error == nil {
+                let users = try? JSONDecoder().decode([User].self, from: data)
                 completion(users)
-            } catch {
-                return
             }
         })
         task.resume()
