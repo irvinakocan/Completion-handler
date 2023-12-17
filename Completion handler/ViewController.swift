@@ -21,8 +21,15 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setTableView()
+        
+        Request.getUsers(completion: { [weak self] users in
+            self?.users = users ?? [User]()
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        })
     }
-
+    
     private func setTableView() {
         view.addSubview(tableView)
         tableView.frame = view.bounds
