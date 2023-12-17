@@ -8,7 +8,7 @@
 import Foundation
 
 class Request {
-    static func getUsers(completion: @escaping ([User]) -> Void) {
+    static func getUsers(completion: @escaping ([User]?) -> Void) {
         
         guard let url = URL(string: GET_USERS_ENDPOINT) else {
             return
